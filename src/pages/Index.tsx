@@ -238,6 +238,7 @@ const Index = () => {
                   <CardContent>
                     <p className="text-gray-600">
                       Символический взнос покрывает организационные расходы
+                      через онлайн перевод
                     </p>
                   </CardContent>
                 </Card>
@@ -308,13 +309,23 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="age">Возраст</Label>
-                  <Input
-                    id="age"
-                    type="number"
-                    placeholder="Введите возраст"
-                    className="mt-1"
-                  />
+                  <Label htmlFor="ageCategory">Возрастная категория</Label>
+                  <Select>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Выберите возрастную категорию" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="preschool">
+                        Дошкольники (до 7 лет)
+                      </SelectItem>
+                      <SelectItem value="elementary">
+                        Школьники 1-4 класс
+                      </SelectItem>
+                      <SelectItem value="middle">
+                        Школьники 5-11 класс
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div>
@@ -359,7 +370,7 @@ const Index = () => {
                   Подача работы
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Загрузите свою творческую работу
+                  Загрузите свою творческую работу (фото или текст)
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -394,7 +405,10 @@ const Index = () => {
                       Перетащите файл сюда или нажмите для выбора
                     </p>
                     <p className="text-sm text-gray-500 mt-2">
-                      Поддерживаются: JPG, PNG, PDF, DOC (макс. 10MB)
+                      <strong>Форматы:</strong> фото (JPG, PNG) для рисунков,
+                      поделок, фотографий;
+                      <br />
+                      текст (DOC, PDF) для сочинений (макс. 10MB)
                     </p>
                   </div>
                 </div>
@@ -442,14 +456,13 @@ const Index = () => {
 
                 <div>
                   <Label>Способ оплаты</Label>
-                  <div className="grid grid-cols-2 gap-4 mt-2">
-                    <Button variant="outline" className="h-16 border-2">
-                      <Icon name="CreditCard" size={24} className="mr-2" />
-                      Картой
-                    </Button>
-                    <Button variant="outline" className="h-16 border-2">
-                      <Icon name="Smartphone" size={24} className="mr-2" />
-                      СБП
+                  <div className="mt-2">
+                    <Button
+                      variant="outline"
+                      className="w-full h-16 border-2 bg-gradient-to-r from-blue-50 to-blue-100"
+                    >
+                      <Icon name="ArrowRightLeft" size={24} className="mr-2" />
+                      Онлайн перевод на карту
                     </Button>
                   </div>
                 </div>
@@ -622,13 +635,43 @@ const Index = () => {
                   <Icon name="Youtube" size={16} />
                 </Button>
               </div>
+            {/* Evaluation Criteria */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Критерии оценки</h4>
+              <div className="space-y-2 text-sm text-gray-400">
+                <p>🎨 <strong>Творческий подход:</strong> 1-5 баллов</p>
+                <p>⚡ <strong>Оригинальность:</strong> 1-5 баллов</p>
+                <p>🎯 <strong>Техническое исполнение:</strong> 1-5 баллов</p>
+                <p>📝 <strong>Соответствие теме:</strong> 1-5 баллов</p>
+                <p className="pt-2 border-t border-gray-700 text-creative-mint">
+                  <strong>Максимум: 20 баллов</strong>
+                </p>
+              </div>
             </div>
           </div>
-
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-            <p className="text-gray-400">
-              &copy; 2025 Творческий Конкурс. Все права защищены.
-            </p>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Возрастные категории</h4>
+                <div className="space-y-2 text-sm text-gray-400">
+                  <p>👶 <strong>Дошкольники</strong> - до 7 лет</p>
+                  <p>📚 <strong>Младшие школьники</strong> - 1-4 класс</p>
+                  <p>🎓 <strong>Старшие школьники</strong> - 5-11 класс</p>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Форматы подачи</h4>
+                <div className="space-y-2 text-sm text-gray-400">
+                  <p>📸 <strong>Фото работ:</strong> JPG, PNG (рисунки, поделки, фото)</p>
+                  <p>📝 <strong>Текстовые работы:</strong> DOC, PDF (сочинения)</p>
+                  <p>📏 <strong>Размер файла:</strong> до 10 МБ</p>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-8">
+              <p className="text-gray-400">&copy; 2025 Творческий Конкурс. Все права защищены.</p>
+            </div>
           </div>
         </div>
       </footer>
